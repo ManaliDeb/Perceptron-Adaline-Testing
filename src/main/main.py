@@ -26,3 +26,25 @@ class Perceptron:
                 update = self.lr * (y[idx] - y_predicted)
                 self.weights += update * x_i
                 self.bias += update
+
+    def predict(self, X):
+        linear_output = np.dot(X, self.weights) + self.bias
+        return self._unit_step_function(linear_output)
+
+    def _unit_step_function(self, x):
+        return np.where(x >= 0, 1, 0)
+
+# linearly separable dataset
+X = np.array([
+    # positive
+    [2, 3], [3, 4], [4, 5], [5, 6], [6, 7], [7, 8],
+    # negative
+    [1, 1], [0, 1], [1, 0,], [0, 0], [2, 1], [3, 0]
+])
+# 1 for pos, 0 for neg
+y = np.array([1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0])
+
+model = Perceptron(learning_rate=0.1, iters=12)
+model.fit(X, y)
+
+# decision boundary
