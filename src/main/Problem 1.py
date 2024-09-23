@@ -34,6 +34,7 @@ class Perceptron:
     def _unit_step_function(self, x):
         return np.where(x >= 0, 1, 0)
 
+
 # linearly separable dataset
 X = np.array([
     # positive
@@ -48,3 +49,22 @@ model = Perceptron(learning_rate=0.1, iters=12)
 model.fit(X, y)
 
 # decision boundary
+w = model.weights
+b = model.bias
+
+# grid of points
+x_vals = np.linspace(-1, 9, 100)
+decision_boundary = -(w[0] * x_vals + b) / w[1]
+
+# might change width and height to 8 and 6 later, also changing
+# lim to 8 instead of 9
+# plot points and decision boundary
+plt.figure(figsize=(9, 7))
+plt.scatter(X[:, 0], X[:, 1], c=y, cmap='bwr', marker='o')
+plt.plot(x_vals, decision_boundary, 'k-', lw=2, label="Decision Boundary")
+plt.xlim([-1, 9])
+plt.ylim([-1, 9])
+plt.xlabel('Feature 1')
+plt.ylabel('Feature 2')
+plt.legend()
+plt.title('Custom Perceptron Decision Boundary')
