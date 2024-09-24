@@ -56,3 +56,22 @@ class Adaline:
     def predict(self, X):
         linear_output = np.dot(X, self.weights) + self.bias
         return np.where(linear_output >= 0.5, 1, 0)
+
+# train Adaline
+adaline = Adaline(learning_rate=0.0001, iters=1000)
+adaline.fit(X_train, y_train)
+
+# plot loss curve
+plt.plot(range(1, len(adaline.losses) + 1), adaline.losses)
+plt.xlabel('Epochs')
+plt.ylabel('Loss')
+plt.title('Loss Over Time')
+plt.show()
+
+# evaluation based on training data
+y_train_pred = adaline.predict(X_train)
+train_accuracy = accuracy_score(y_train, y_train_pred)
+
+# evaluation based on testing data
+y_test_pred = adaline.predict(X_test)
+test_accuracy = accuracy_score(y_test, y_test_pred)
