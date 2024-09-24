@@ -84,3 +84,32 @@ test_accuracy = accuracy_score(y_test, y_test_pred)
 # print results
 print(f"Training Accuracy: {train_accuracy * 100:.2f}%")
 print(f"Test Accuracy: {test_accuracy * 100:.2f}%")
+
+"""
+Problem 4
+"""
+
+feature_names = ['Pclass', 'Sex', 'Age', 'SibSp', 'Parch', 'Fare', 'Embarked']
+
+# get weight from adaline
+weights = adaline.weights
+
+# pandas dataframe
+feature_importance = pd.DataFrame({
+    'Feature': feature_names,
+    'Weight': weights
+})
+
+# sort features by weight
+feature_importance['Absolute Weight'] = feature_importance['Weight'].abs()
+feature_importance = feature_importance.sort_values(by='Absolute Weight', ascending=False)
+
+print("Feature Importance by Weight:")
+print(feature_importance)
+
+# visualization
+plt.barh(feature_importance['Feature'], feature_importance['Absolute Weight'])
+plt.xlabel('Weight')
+plt.ylabel('Feature')
+plt.title('Feature Importance')
+plt.show()
