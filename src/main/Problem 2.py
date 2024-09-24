@@ -2,10 +2,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 """
-Train basic Perceptron model using linearly separable data
+Train basic Perceptron model using non-linearly separable data
 """
 
-# create perceptron class
+# same perceptron class from problem
 class Perceptron:
     def __init__(self, learning_rate=0.01, iters=1000):
         self.lr = learning_rate
@@ -38,15 +38,17 @@ class Perceptron:
         return np.where(x >= 0, 1, 0)
 
 
-# linearly separable dataset
+# non-linearly separable dataset
 X = np.array([
     # positive
-    [2, 3], [3, 4], [4, 5], [5, 6], [6, 7], [7, 8],
+    [2, 3], [3, 4], [4, 5], [5, 6], [6, 7], [7, 8], [6, 2],
     # negative
-    [1, 1], [0, 1], [1, 0,], [0, 0], [2, 1], [3, 0]
+    [1, 1], [0, 1], [1, 0,], [0, 0], [2, 1], [3, 0],
+    # negative with overlap
+    [4, 3], [5, 4]
 ])
 # 1 for pos, 0 for neg
-y = np.array([1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0])
+y = np.array([1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0])
 
 model = Perceptron(learning_rate=0.1, iters=12)
 model.fit(X, y)
@@ -75,4 +77,5 @@ plt.show()
 prediction = np.array([model.predict(x) for x in X])
 accuracy = np.mean(prediction == y)
 print(f"Accuracy of training set: {accuracy * 100:.2f}%")
-
+# check convergence
+print(f"Weights: {w}, Bias: {b}")
