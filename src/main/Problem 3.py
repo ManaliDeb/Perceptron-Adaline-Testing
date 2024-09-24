@@ -3,7 +3,7 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import accuracy_score
-import matplotlib.pylot as plt
+import matplotlib.pyplot as plt
 
 # load data
 data = pd.read_csv('src/main/resources/train.csv')
