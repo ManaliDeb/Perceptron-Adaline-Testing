@@ -75,3 +75,7 @@ train_accuracy = accuracy_score(y_train, y_train_pred)
 # evaluation based on testing data
 y_test_pred = adaline.predict(X_test)
 test_accuracy = accuracy_score(y_test, y_test_pred)
+
+# print results
+print(f"Training Accuracy: {train_accuracy * 100:.2f}%")
+print(f"Test Accuracy: {test_accuracy * 100:.2f}%")
