@@ -5,6 +5,9 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import accuracy_score
 import matplotlib.pyplot as plt
 
+"""
+Adaline implementation using Titanic train.csv dataset
+"""
 # load data
 data = pd.read_csv('src/main/resources/train.csv')
 
