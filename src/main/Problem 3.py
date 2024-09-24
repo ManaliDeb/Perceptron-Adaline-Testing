@@ -29,6 +29,7 @@ X = scaler.fit_transform(X)
 # split training data into training and test set
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 
+
 # Adaline model, batch gradient
 class Adaline:
     def __init__(self, learning_rate=0.01, iters=1000):
@@ -57,8 +58,9 @@ class Adaline:
         linear_output = np.dot(X, self.weights) + self.bias
         return np.where(linear_output >= 0.5, 1, 0)
 
+
 # train Adaline
-adaline = Adaline(learning_rate=0.0001, iters=1000)
+adaline = Adaline(learning_rate=0.01, iters=1000)
 adaline.fit(X_train, y_train)
 
 # plot loss curve

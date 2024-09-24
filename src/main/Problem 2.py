@@ -70,7 +70,7 @@ plt.ylim([-1, 9])
 plt.xlabel('Feature 1')
 plt.ylabel('Feature 2')
 plt.legend()
-plt.title('Perceptron Test Set 1')
+plt.title('Perceptron Test Set 2')
 plt.show()
 
 # measure and tell accuracy
