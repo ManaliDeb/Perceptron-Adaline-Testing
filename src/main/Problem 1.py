@@ -71,5 +71,5 @@ plt.show()
 # measure and tell accuracy
 prediction = np.array([model.predict(x) for x in X])
 accuracy = np.mean(prediction == y)
-print(f"Accuracy of training set: {accuracy * 100:.2f}f")
+print(f"Accuracy of training set: {accuracy * 100:.2f}%")
 
